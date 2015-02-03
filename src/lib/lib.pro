@@ -4,7 +4,7 @@ CONFIG += ordered
 
 SUBDIRS += crashdump
 #SUBDIRS += markdown
-SUBDIRS += hunspell
+!win32-g++: SUBDIRS += hunspell
 SUBDIRS += multimarkdown/peg/leg.pro
 SUBDIRS += pcre
 SUBDIRS += core.pro

@@ -24,7 +24,7 @@ CONFIG(debug, debug|release){ #debug
     LIBS += -L../release -lgbreakpad -lcore
 }
 #Fix for hunspell
-win32: {
+win32-msvc*: {
     INCLUDEPATH+=../lib/hunspell/src ../lib/pcre
     CONFIG(debug, debug|release){
         LIBS += -L../debug -lhunspell_d -lmdcharm_pcre
@@ -51,7 +51,7 @@ win32 {
 
 win32-g++ {
     CONFIG += link_pkgconfig
-    PKGCONFIG += zlib
+    PKGCONFIG += zlib hunspell
 }
 
 win32-msvc*:QMAKE_CXXFLAGS_RELEASE += -Zi
