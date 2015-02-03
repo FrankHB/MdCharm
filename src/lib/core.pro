@@ -2,14 +2,14 @@ TEMPLATE = lib
 
 TARGET = core
 
-win32: DEFINES == _EXPORTING
+win32: DEFINES = _EXPORTING
 
 CONFIG += warn_off
 
 unix: CONFIG += static
 
 markdown_parser_c.target = $$PWD/multimarkdown/src/markdown_parser.c
-win32-msvc*: markdown_parser_c.commands = cmd /c $$PWD/multimarkdown/src/markdown_parser.bat
+win32: markdown_parser_c.commands = cmd /c $$PWD/multimarkdown/src/markdown_parser.bat
 unix: markdown_parser_c.commands = $$PWD/multimarkdown/src/markdown_parser.sh
 markdown_parser_c.depends = markdown_parser_c_nonexist
 markdown_parser_c.CONFIG += recursive

@@ -24,7 +24,7 @@ CONFIG(debug, debug|release){ #debug
     LIBS += -L../release -lgbreakpad -lcore
 }
 #Fix for hunspell
-win32-msvc*: {
+win32: {
     INCLUDEPATH+=../lib/hunspell/src ../lib/pcre
     CONFIG(debug, debug|release){
         LIBS += -L../debug -lhunspell_d -lmdcharm_pcre
@@ -47,6 +47,11 @@ unix: {
 
 win32 {
     RC_FILE = $$PWD/../res/mdcharm.rc
+}
+
+win32-g++ {
+    CONFIG += link_pkgconfig
+    PKGCONFIG += zlib
 }
 
 win32-msvc*:QMAKE_CXXFLAGS_RELEASE += -Zi
@@ -87,7 +92,6 @@ SOURCES += \
     conf/configuredialog.cpp \
     configuration.cpp \
     conf/pages.cpp \
-    util/test/qregularexpression.cpp \
     baseeditor/baseeditor.cpp \
     about/aboutmdcharmdialog.cpp \
     util/gui/findandreplace.cpp \

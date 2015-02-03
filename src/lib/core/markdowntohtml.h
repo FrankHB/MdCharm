@@ -18,6 +18,7 @@ class DECLSPEC MarkdownToHtml
 public:
     const static int OUTPUT_UNIT = 512;
     enum MarkdownToHtmlResult {
+#undef ERROR
         ERROR = -1,
         NOTHING,
         SUCCESS
