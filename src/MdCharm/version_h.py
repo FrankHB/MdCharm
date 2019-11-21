@@ -9,14 +9,18 @@ if __name__ == '__main__':
         if os.path.isfile("version.h"):
             print('Already Exist')
             sys.exit(0)
-    version_h = open('../../src/MdCharm/version.h.in').read()
-    mdcharm_rc = open('../../src/MdCharm/mdcharm.rc.in').read()
+    src_dir = sys.argv[0] + '/../'
+    version_h = open(src_dir + 'version.h.in').read()
+    mdcharm_rc = open(src_dir + 'mdcharm.rc.in').read()
+    cwd = os.getcwd()
+    os.chdir(src_dir)
     revision_output = os.popen('git log -1 --format="%H"')
     if revision_output:
         revision = str(revision_output.read()).strip()
     else:
         sys.exit(2)
     tag_output = str(os.popen('git tag').read()).strip()
+    os.chdir(cwd)
     if tag_output:
         tag = tag_output.replace('\r\n', '\n').split('\n')[-1]
     else:
@@ -31,10 +35,10 @@ if __name__ == '__main__':
                                               version_list[2],
                                               revision,
                                               ntime_str)
-    version_header_file = open("../../src/MdCharm/version.h", 'w+')
+    version_header_file = open(src_dir + "version.h", 'w+')
     version_header_file.write(real_version_h)
     version_header_file.close()
     real_rc_file = mdcharm_rc.format(version_list[0], version_list[1], version_list[2], 0, tag)
-    rc_file = open("../../src/res/mdcharm.rc", 'w+')
+    rc_file = open(src_dir + "mdcharm.rc", 'w+')
     rc_file.write(real_rc_file)
     rc_file.close()
