@@ -4,7 +4,7 @@ lessThan(QT_MAJOR_VERSION, 5){
     QT += core gui webkit network
 } else {
     DEFINES += QT_V5
-    QT += core gui webkit network widgets webkitwidgets printsupport
+    QT += core gui webkit network widgets webkitwidgets printsupport qml
     unix: {
         QMAKE_RPATHDIR += /usr/local/lib/Qt-5.0.2/lib/
     }
