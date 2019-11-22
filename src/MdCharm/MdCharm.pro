@@ -51,7 +51,7 @@ win32 {
 
 win32-g++ {
     CONFIG += link_pkgconfig
-    PKGCONFIG += zlib hunspell
+    PKGCONFIG += zlib hunspell breakpad-client
 }
 
 win32-msvc*:QMAKE_CXXFLAGS_RELEASE += -Zi
@@ -60,8 +60,11 @@ win32-msvc*:QMAKE_LFLAGS_RELEASE += /DEBUG /OPT:REF /OPT:ICF
 
 INCLUDEPATH += ../lib/core ../lib/markdown/html \
                 ../lib/markdown/src ../lib/crashdump \
-                ../lib/zlib/zlib ../lib/pcre \
                 ../lib/rapidxml
+
+!win32-g++ {
+    INCLUDEPATH += ../lib/zlib/zlib ../lib/pcre
+}
 
 version_h.target = version.h
 
