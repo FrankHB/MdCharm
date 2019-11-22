@@ -60,8 +60,11 @@ win32-msvc*:QMAKE_LFLAGS_RELEASE += /DEBUG /OPT:REF /OPT:ICF
 
 INCLUDEPATH += ../lib/core ../lib/markdown/html \
                 ../lib/markdown/src ../lib/crashdump \
-                ../lib/zlib/zlib ../lib/pcre \
                 ../lib/rapidxml
+
+!win32-g++ {
+    INCLUDEPATH += ../lib/zlib/zlib ../lib/pcre
+}
 
 version_h.target = version.h
 
