@@ -51,7 +51,7 @@ win32 {
 
 win32-g++ {
     CONFIG += link_pkgconfig
-    PKGCONFIG += zlib hunspell
+    PKGCONFIG += zlib hunspell breakpad-client
 }
 
 win32-msvc*:QMAKE_CXXFLAGS_RELEASE += -Zi

@@ -36,4 +36,12 @@ INCLUDEPATH += $$PWD
 HEADERS += $$PWD/BreakpadHandler.h
 SOURCES += $$PWD/BreakpadHandler.cpp
 
-include($$PWD/gbreakpad/gbreakpad.pri)
+!win32-g++ {
+    include($$PWD/gbreakpad/gbreakpad.pri)
+}
+
+win32-g++ {
+    CONFIG += link_pkgconfig
+    PKGCONFIG += breakpad-client
+}
+
