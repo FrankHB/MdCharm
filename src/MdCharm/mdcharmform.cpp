@@ -92,8 +92,8 @@ void MdCharmForm::initGui()
     markdownToolBar->setEnabled(false);
     addToolBar(markdownToolBar);
     previewOptionToolBar = new QToolBar(tr("Preview Option ToolBar"), this);
-    previewOptionToolBar->setObjectName("previewOptionToolBar");;
-    previewOptionToolBar->setIconSize(QSize(16, 16));;
+    previewOptionToolBar->setObjectName("previewOptionToolBar");
+    previewOptionToolBar->setIconSize(QSize(16, 16));
     previewOptionToolBar->setEnabled(true);
     addToolBar(previewOptionToolBar);
     dockBar = new QToolBar(tr("Dock Bar"), this);

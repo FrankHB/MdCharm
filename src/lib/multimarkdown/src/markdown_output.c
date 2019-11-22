@@ -106,7 +106,7 @@ static int notenumber = 0;  /* Number of footnote. */
 /* pad - add newlines if needed */
 static void pad(GString *out, int num) {
     while (num-- > padded)
-        g_string_append_printf(out, "\n");;
+        g_string_append_printf(out, "\n");
     padded = num;
 }
 
